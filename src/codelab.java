@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.time.Year;
+
+public class codelab {
+    public static void main(String[] args){
+        Scanner myScanner = new Scanner(System.in);
+        String nama;
+        char jenis_kelamin;
+        int tahun;
+        int umur;
+        char inputkecil;
+
+        System.out.print("masukkan nama: ");
+        nama= myScanner.next();
+        System.out.print("masukkan jenis kelamin (p/l): ");
+        jenis_kelamin= myScanner.next().charAt(0);
+        inputkecil= Character.toLowerCase(jenis_kelamin);
+        System.out.print("masukkan tahun: ");
+        tahun= myScanner.nextInt();
+
+        System.out.println("---DATA DIRI---");
+        System.out.println("nama: " + nama);
+
+        if(inputkecil== 'l'){
+            System.out.println("jenis kelamin: laki laki");
+        }else if (inputkecil== 'p'){
+            System.out.println("jenis kelamin: perempuan");
+        }
+        Year year = Year.now();
+        int tahunsekarang= year.getValue();
+        umur= tahunsekarang - tahun;
+        System.out.println("umur: " + umur);
+        myScanner.close();
+    }
+
+}
