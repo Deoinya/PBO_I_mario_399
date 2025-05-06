@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class Modul2 {
+    public static class Admin{
+        private String username = "Mario";
+        private String password = "Kamunanya";
+        public boolean login(String username, String password) {
+            return this.username.equals(username) && this.password.equals(password);
+        }
+    }
+    public static class Mahasiswa{
+        private String name;
+        private String nim;
+
+        public Mahasiswa(String name, String nim){
+            this.name = name;
+            this.nim = nim;
+        }
+        public boolean login(String name, String nim){
+            return this.name.equals(name) && this.nim.equals(nim);
+        }
+        public void Print(){
+            System.out.println("Masukkan Nama: " + name);
+            System.out.println("Masukkan Nim: " + nim);
+        }
+    }
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        Admin admin = new Admin();
+        Mahasiswa mahasiswa = new Mahasiswa("Nabila", "202410");
+
+        System.out.println("Pilih Login:\n 1.Admin\n 2.Mahasiswa");
+        System.out.print("Masukkan pilihan: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        if(choice == 1){
+            System.out.print("Masukkan Username: ");
+            String username = scanner.nextLine();
+            System.out.print("Masukkan Password: ");
+            String password = scanner.nextLine();
+
+            if(admin.login(username, password)){
+                System.out.println("Login anda berhasil!");
+            }else{
+                System.out.println("Mohon maaf! username atau password anda salah.");
+            }
+        }else if (choice == 2){
+            System.out.print("Masukkan nama: ");
+            String nama = scanner.nextLine();
+            System.out.print("Masukkan nim: ");
+            String nim = scanner.nextLine();
+
+            if(mahasiswa.login(nama, nim)){
+                System.out.println("Login anda berhasil!");
+                mahasiswa.Print();
+            }else {
+                System.out.println("Mohon maaf! nama atau nim anda salah.");
+            }
+        }else {
+            System.out.println("pilihan tidak valid.");
+        }
+        scanner.close();
+    }
+
+}
