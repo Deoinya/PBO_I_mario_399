@@ -1,0 +1,25 @@
+public class M2_code_1 {
+    public static class Hewan{
+        String nama;
+        String suara;
+        String jenis;
+
+        public Hewan(String nama, String suara, String jenis){
+            this.nama = nama;
+            this.suara = suara;
+            this.jenis = jenis;
+        }
+        public void Print(){
+            System.out.println("Nama: " + nama);
+            System.out.println("suara: " + suara);
+            System.out.println("jenis: " + jenis);
+        }
+    }
+    public static void main(String[] args) {
+        Hewan hewan1 = new Hewan("Kucing", "Mamalia", "Nyaa");
+        Hewan hewan2 = new Hewan("Anjing", "Mamalia", "woof woof");
+
+        hewan1.Print();
+        hewan2.Print();
+    }
+}
