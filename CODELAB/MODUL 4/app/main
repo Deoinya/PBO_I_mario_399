@@ -1,0 +1,26 @@
+package com.example.app;
+
+import com.example.perpustakaan.*;
+
+public class Main {
+    public static void main(String[] args){
+        Nonfiksi nonFiksi = new Nonfiksi("Madilog ", " Tan Malaka", "(Bidang:Sejarah dan Ilmu Pengetahuan)");
+        Fiksi fiksi = new Fiksi("Hainuwele Sang Putri Kelapa ", " Lilis Hu", "(Genre:Dongeng)");
+
+        nonFiksi.displayInfo();
+        fiksi.displayInfo();
+        System.out.println();
+
+        Anggota anggota = new Anggota("Mario" , "(ID:399)");
+        Anggota anggota1 = new Anggota("Sodiq", "(ID:389)");
+        System.out.println();
+
+        anggota.pinjamBuku(nonFiksi.judul);
+        anggota1.pinjamBuku(fiksi.judul, 7);
+        System.out.println();
+
+        anggota.kembalikanBuku();
+        anggota1.kembalikanBuku();
+
+    }
+}
