@@ -1,0 +1,61 @@
+public class M3_code_1 {
+
+    public static class Karaktergame {
+        private String name;
+        private int kesehatan;
+
+        public Karaktergame(String name, int kesehatan) { //constructor
+            this.name = name;
+            this.kesehatan = kesehatan;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+        public String getName() {
+            return name;
+        }
+        public void setKesehatan(int kesehatan) {
+            this.kesehatan = kesehatan;
+        }
+        public int getKesehatan() {
+            return kesehatan;
+        }
+        public void serang(Karaktergame target) {
+            System.out.print(name + "menyerang" + target.getName() + "!");
+        }
+    }
+    public static class Pahlawan extends Karaktergame { //anak kelas
+        public Pahlawan(String name, int kesehatan){
+            super(name, kesehatan);
+        }
+        @Override
+        public void serang(Karaktergame target){
+            System.out.println(getName() + "menyerang" + target.getName() + "menggunakan orbital Strike!");
+            target.setKesehatan(target.getKesehatan() - 20);
+            System.out.println(target.getName() + ":" + target.getKesehatan());
+        }
+    }
+    public static class Musuh extends Karaktergame{
+        public Musuh(String name, int kesehatan){
+            super(name, kesehatan);
+        }
+        @Override
+        public void serang(Karaktergame target){
+            System.out.println(getName() + "menyerang" + target.getName() + "menggunakan snake bite!");
+            target.setKesehatan(target.getKesehatan() - 15);
+            System.out.println(target.getName() + ":" + target.getKesehatan());
+        }
+    }
+    public static void main(String[] args){
+        Pahlawan brimstore = new Pahlawan("Brimstore memiliki kesehatan", 150);
+        Musuh viper = new Musuh("Viper memiliki kesehatan", 200);
+
+        System.out.println("Status awal: ");
+        System.out.println(brimstore.getName() + ":" + viper.getKesehatan());
+        System.out.println(viper.getName() + ":" + brimstore.getKesehatan());
+
+        brimstore.serang(viper);
+        viper.serang(brimstore);
+    }
+
+}
