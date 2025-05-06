@@ -1,0 +1,48 @@
+public class M2_code_2 {
+    static class RekeningBank {
+        String NomorRekening;
+        String NamaPemilik;
+        double Saldo;
+
+        public RekeningBank(String NomorRekening, String NamaPemilik, double Saldo) {
+            this.NomorRekening = NomorRekening;
+            this.NamaPemilik = NamaPemilik;
+            this.Saldo = Saldo;
+        }
+
+        public void Print() {
+            System.out.println("Nomor Rekening: " + NomorRekening);
+            System.out.println("Nama Pemilik: " + NamaPemilik);
+            System.out.println("Saldo:" + Saldo);
+        }
+
+        public void SetorUang(double uang) {
+            Saldo+=uang;
+            System.out.println(NamaPemilik + "Meyetor: Rp." + uang);
+            System.out.println("Saldo sekarang: Rp." + Saldo);
+            System.out.println();
+        }
+
+        public void TarikUang(double uang) {
+            if (Saldo>=uang) {
+                System.out.println("Saldo Anda Tidak Cukup!");
+            } else {
+                Saldo-=uang;
+                System.out.println("Saldo Yang Ditarik: Rp." + uang);
+                System.out.println("Saldo Sekarang: Rp." + Saldo);
+            }
+            System.out.println();
+        }
+    }
+    public static void main(String[] args){
+        RekeningBank rekeningBank1 = new RekeningBank("202410370110399", "Mario", 5000000);
+        RekeningBank rekeningBank2 = new RekeningBank("202410370110398", "Sodiq", 2000000);
+
+        rekeningBank1.Print();
+        rekeningBank2.Print();
+
+        rekeningBank1.SetorUang(500000);
+        rekeningBank2.TarikUang(200000);
+    }
+
+}
