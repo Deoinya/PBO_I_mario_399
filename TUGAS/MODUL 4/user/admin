@@ -1,0 +1,66 @@
+package com.praktikum.users;
+
+import com.praktikum.actions.*;
+
+import java.util.Scanner;
+
+public class Admin extends User implements Adminactions {
+    String username;
+    String password;
+    int pilihanMenu;
+    Scanner input = new Scanner(System.in);
+
+    public Admin(String username, String password){
+        super(username, password);
+        this.username = username;
+        this.password = password;
+    }
+
+    @Override
+    public void login(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Masukkan Username: ");
+        String Username = input.nextLine();
+        System.out.print("Masukkan Password: ");
+        String Password = input.nextLine();
+        if(Username.equals(username) && Password.equals(password)){
+            displayInfo();
+            displayAppmenu();
+        }else{
+            System.out.println("Mohon Maaf! Username atau Password Anda Salah.");
+        }
+    }
+
+    @Override
+    public void displayInfo(){
+        System.out.println("Login Anda Berhasil!");
+    }
+
+    @Override
+    public void manageItems(){
+        System.out.println("Fitur kelola belum tersedia");
+    }
+
+    @Override
+    public void manageUsers(){
+        System.out.println("Fitur kelola mahasiswa belum tersedia");
+    }
+    @Override
+    public void displayAppmenu(){
+        System.out.println("Menu");
+        System.out.println("1. Laporkan barangTemuan/Hilang");
+        System.out.println("2. Lihat Daftar Laporan");
+        System.out.println("3. logout");
+        pilihanMenu = input.nextInt();
+        if (pilihanMenu == 1){
+            manageItems();
+        } else if (pilihanMenu == 2) {
+            manageUsers();
+        } else if (pilihanMenu == 3) {
+            System.out.println("Terima Kasih");
+        } else {
+            System.out.println("pilihan menu tidak valid");
+        }
+
+    }
+}
