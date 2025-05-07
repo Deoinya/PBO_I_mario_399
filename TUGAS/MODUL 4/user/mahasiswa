@@ -1,0 +1,74 @@
+package com.praktikum.users;
+
+import com.praktikum.actions.*;
+
+import java.util.Scanner;
+
+public class Mahasiswa extends User implements Mahasiswaactions {
+    Scanner input = new Scanner(System.in);
+    String nama;
+    String nim;
+    String namaBarang;
+    String deskripsiBarang;
+    String lokasiDitemukan;
+    int pilihanMenu;
+
+    public Mahasiswa(String nama, String nim){
+        super(nama, nim);
+        this.nama = nama;
+        this.nim = nim;
+    }
+
+    @Override
+    public void login(){
+        System.out.print("Masukkan Nama: ");
+        String Nama = input.nextLine();
+        System.out.print("Masukkan Nim: ");
+        String Nim = input.nextLine();
+        if(Nama.equals(nama) && Nim.equals(nim)){
+            displayInfo();
+            displayAppmenu();
+        }else{
+            System.out.println("Mohon Maaf! Nama atau Nim Anda Salah");
+        }
+    }
+
+    @Override
+    public void displayInfo(){
+        System.out.println("Login Berhasil");
+    }
+
+    @Override
+    public void reportItem(){
+        System.out.print("Masukkan Barang: ");
+        namaBarang = input.next();
+        System.out.print("Masukkan Deskripsi Barang: ");
+        deskripsiBarang = input.next();
+        System.out.print("Masukkan lokasi Terakhir/Ditemukan: ");
+        lokasiDitemukan = input.next();
+    }
+
+    @Override
+    public void viewReportedItems(){
+        System.out.println("Fitur Lihat Laporan Belum Tersedia");
+    }
+
+    @Override
+    public void displayAppmenu(){
+        System.out.println("Menu");
+        System.out.println("1. Laporkan barangTemuan/Hilang");
+        System.out.println("2. Lihat Daftar Laporan");
+        System.out.println("3. logout");
+        System.out.print("pilihan menu (1/2/3): ");
+        pilihanMenu = input.nextInt();
+        if (pilihanMenu == 1){
+            reportItem();
+        } else if (pilihanMenu == 2) {
+            viewReportedItems();
+        } else if (pilihanMenu == 3) {
+            System.out.println("Terima Kasih");
+        } else {
+            System.out.println("pilihan menu tidak valid");
+        }
+    }
+}
